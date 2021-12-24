@@ -1,0 +1,17 @@
+@import "../../assets/styles/mixins";
+@import "../../assets/styles/variables";
+
+.mainWrapperLoginPage {
+  display: flex;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: $primary-red;
+  .mainWrapperLoginPageBg {
+    display: flex;
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: $gradient-primary-red;
+  }
+}

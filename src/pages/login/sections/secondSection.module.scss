@@ -1,0 +1,45 @@
+@import "../../../assets/styles/mixins";
+@import "../../../assets/styles/variables";
+
+.mainWrapperLoginPageSecond {
+  display: flex;
+  width: 50%;
+  justify-content: flex-start;
+  align-items: center;
+  .LoginPageSecondContent {
+    display: flex;
+    border-radius: 6px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: $steping * 50;
+    padding: $steping * 15;
+    background: $white;
+    position: relative;
+    margin: auto;
+    @include forNotMobile {
+      min-width: 356px;
+      right: -7%;
+    }
+    .LoginPageSecondContentText {
+      display: flex;
+      width: 100%;
+      color: $gray-60;
+      font-weight: 700;
+      font-size: $fonts * 10;
+      justify-content: flex-start;
+      text-align: left;
+      margin-bottom: $steping * 3;
+    }
+    .LoginPageSecondContentLink {
+      display: flex;
+      width: 100%;
+      color: $gray-60;
+      font-weight: 300;
+      font-size: $fonts * 7.5;
+      justify-content: flex-start;
+      text-align: left;
+    }
+  }
+}

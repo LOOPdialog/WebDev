@@ -1,0 +1,90 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.btnWrapper {
+  box-sizing: border-box;
+  padding: $steping * 11 !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px !important;
+  line-height: 20px !important;
+  border-radius: 4px !important;
+  margin-right: 20px;
+  &:last-child {
+    margin-right: 0;
+  }
+  :global(.anticon) {
+    margin-top: 1px;
+    margin-left: 10px !important;
+    line-height: 0 !important;
+  }
+  @include forTablet {
+    font-size: 14px !important;
+    line-height: 22px !important;
+  }
+  @include forMobile {
+    font-size: 14px !important;
+    padding: 24px !important;
+    :global(.anticon) {
+      display: none;
+    }
+  }
+}
+
+.btnWhite {
+  background-color: $white-text !important;
+  color: $blue-text !important;
+  border-color: $blue-text !important;
+  &:hover {
+    border-color: $white-text !important;
+  }
+  // @include btnWhiteHoverAndClick;
+  @include forMobile {
+    // @include btnMobileWhiteHoverAndClick;
+  }
+}
+
+.btnBlue {
+  background-color: $blue-text;
+  color: $white-text;
+  border: 1px solid transparent !important;
+  // @include btnBlueHoverAndClick;
+  @include forTablet {
+    // @include btnMobileBlueHoverAndClick;
+  }
+  @include forMobile {
+    // @include btnMobileBlueHoverAndClick;
+  }
+}
+
+.btnGhost {
+  background-color: transparent !important;
+  color: $blue-text;
+  border-color: $blue-text;
+  // @include btnWhiteHoverAndClick;
+  @include forTablet {
+    // @include btnMobileWhiteHoverAndClick;
+  }
+  @include forMobile {
+    // @include btnMobileWhiteHoverAndClick;
+  }
+}
+
+.smallPadding {
+  @include forMobile {
+    padding: 24px 16px !important;
+    margin-right: 20px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  @include forSmallMobileDisplay {
+    padding: 22px 14px !important;
+    margin-bottom: 10px;
+    width: 100% !important;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

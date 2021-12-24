@@ -32,5 +32,6 @@
   "include": [
     "./src/**/*",
     ".eslintrc.js",
+    "./src/custom.d.ts"
   ]
 }

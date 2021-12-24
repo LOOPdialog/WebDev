@@ -1,0 +1,14 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+.CheckboxTitle {
+  display: flex;
+  justify-content: flex-start;
+  color: $black;
+  font-size: $fonts * 8;
+}
+.CheckboxSecondary {
+  display: flex;
+  justify-content: flex-start;
+  color: $primary-black-05-text;
+}

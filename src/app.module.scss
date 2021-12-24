@@ -1,0 +1,12 @@
+@import './assets/styles/mixins';
+@import './assets/styles/variables';
+
+
+body {
+  background-color: $body-bg;
+}
+
+.layoutWrapper {
+  font-family: NunitoSans, sans-serif;
+  background-color: $body-bg !important;
+}

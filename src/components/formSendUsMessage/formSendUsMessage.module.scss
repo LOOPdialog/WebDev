@@ -1,0 +1,105 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/mixins";
+
+.formWrapper {
+  width: 100%;
+  height: auto;
+  position: relative;
+  margin-top: $steping * 9 !important;
+
+  :global(.fromItemParrent) {
+    position: relative;
+  }
+
+  .inputFieldTitle {
+    display: flex;
+    position: absolute;
+    z-index: 3;
+    left: $steping * 5;
+    top: -15px;
+    background: $white;
+    padding: $steping * 2;
+    color: $white;
+    font-size: $fonts * 6;
+  }
+  .inputFieldInfoIcon {
+    display: none;
+  }
+  .formItemWrapper:global(.ant-form-item-has-error) {
+    .inputFieldWithSecondBg {
+      border-width: 2px !important;
+      box-shadow: none !important;
+    }
+  }
+  .formItemWrapper:global(.ant-form-item-has-error) ~ {
+    .inputFieldTitle {
+      color: $black;
+    }
+    .inputFieldInfoIcon {
+      display: flex;
+      position: absolute;
+      right: 20px;
+      top: 14px;
+    }
+    .ItemSvg {
+      display: none;
+    }
+  }
+  .ItemSvg {
+    position: absolute;
+    display: flex;
+    right: 20px;
+    top: 20px;
+    svg:nth-child(2) {
+      display: none;
+    }
+  }
+  .formItemWrapper:focus-within ~ .ItemSvg {
+    svg:nth-child(1) {
+      display: none;
+    }
+    svg:nth-child(2) {
+      display: block;
+    }
+  }
+  .formItemWrapper {
+    margin-bottom: $steping * 8;
+    .inputField {
+      padding: 16px;
+      border-radius: 4px;
+      border-color: transparent;
+    }
+    .inputFieldWithSecondBg {
+      position: relative;
+      padding: $steping * 8;
+      border-radius: 4px;
+      border-color: $gray-40;
+      background-color: $white;
+    }
+
+    .inputFieldWithSecondBg {
+      // box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+      font-size: $fonts * 9;
+      padding: $steping * 4;
+
+      &:focus {
+        box-shadow: 0 0 0 2px $white;
+      }
+    }
+  }
+  .formItemBtnWrapper {
+    button {
+      margin-bottom: 0;
+      color: $white;
+      font-size: $fonts * 9;
+      font-weight: 700;
+      background-color: $primary-red;
+      &:hover {
+        background-color: $primary-red-hover;
+      }
+    }
+  }
+  :global(.ant-input-suffix) {
+    display: none;
+  }
+}

@@ -1,0 +1,25 @@
+@import "../../../assets/styles/mixins";
+@import "../../../assets/styles/variables";
+
+.mainWrapperLoginPageFirst {
+  display: flex;
+  width: 50%;
+  justify-content: flex-start;
+  align-items: center;
+  .LoginPageFirstContent {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: $steping * 50;
+    .LPFContentImage {
+      display: flex;
+    }
+    .LPFContentText {
+      display: flex;
+      font-size: $fonts * 17;
+      font-weight: 700;
+      color: $white;
+      margin-left: $steping * 10;
+    }
+  }
+}
