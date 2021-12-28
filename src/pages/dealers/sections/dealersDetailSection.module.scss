@@ -1,0 +1,171 @@
+@import "../../../assets/styles/mixins";
+@import "../../../assets/styles/variables";
+
+.dealersDetailSectionPage {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+  padding: $steping * 14 $steping * 15;
+  .dealersDetailSectionPageHeader {
+    display: flex;
+    flex-direction: column;
+    .dealersDetailHeaderTitle {
+      display: flex;
+      position: relative;
+      width: 100%;
+      align-items: center;
+      .dealersDetailHeaderTitleText {
+        font-size: $fonts * 10;
+        font-weight: 700;
+        color: $gray-60;
+      }
+      .dealersDetailHeaderTitlePhone {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%) rotate(90deg);
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+    .dealersDetailHeaderBody {
+      display: flex;
+      flex-direction: column;
+      margin-top: $steping * 10;
+      > div {
+        display: flex;
+        width: 100%;
+        > span:first-child {
+          display: inline-block;
+          min-width: 90px;
+          font-size: $fonts * 9;
+          font-weight: 700;
+          color: $gray-60;
+        }
+        > span:last-child {
+          font-size: $fonts * 9;
+          padding-left: $steping * 4;
+          font-weight: 300;
+        }
+      }
+    }
+  }
+  .dealersDetailSectionPageCustomer {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    margin-top: $steping * 15;
+    padding: $steping * 10;
+    background-color: $white;
+    border-radius: 6px;
+    .dealersDetailSectionPageCustomerHeader {
+      display: flex;
+      align-items: center;
+      position: relative;
+      .icon {
+        display: block;
+        height: 17px;
+      }
+      .text {
+        font-size: $fonts * 7.5;
+        color: $gray-60;
+        font-weight: 700;
+        margin-left: $steping * 6;
+      }
+    }
+    .dealersDetailSectionPageCustomerInfo {
+      display: flex;
+      position: relative;
+      .dealersDetailSectionPageCustomerInfoText {
+        .title {
+          font-size: $fonts * 9;
+          font-weight: 700;
+          color: $gray-60;
+        }
+        .preTitle {
+          font-size: $fonts * 6;
+          font-weight: 700;
+          color: $gray-40;
+          margin-top: $steping * 5;
+        }
+        .text {
+          font-size: $fonts * 7.5;
+          font-weight: 300;
+          color: $gray-60;
+        }
+        .link {
+          font-size: $fonts * 7.5;
+          font-weight: 700;
+          color: $gray-60;
+          color: $primary-blue-50;
+          margin-top: $steping * 5;
+          cursor: pointer;
+          .icon {
+            margin-left: $steping * 2;
+            svg {
+              width: 12px;
+              height: 12px;
+            }
+          }
+        }
+      }
+      .dealersDetailSectionPageCustomerInfoImg {
+        display: flex;
+        position: relative;
+        align-items: flex-start;
+        margin-left: auto;
+      }
+    }
+  }
+  .dealersDetailSectionPageLocation {
+    .dealersDetailLocationItem {
+      margin-top: $steping * 10;
+      background-color: $white;
+      border-radius: 6px;
+      padding: $steping * 10;
+      .header {
+        display: flex;
+        position: relative;
+        .text {
+          font-size: $fonts * 7.5;
+          font-weight: 700;
+          color: $gray-60;
+        }
+        .leftIcon {
+          margin-right: $steping * 5;
+        }
+        .rightIcon {
+          position: absolute;
+          right: 0;
+        }
+      }
+    }
+    .content {
+      display: flex;
+      position: relative;
+      margin-top: $steping * 8;
+      .contentLeft {
+        display: flex;
+        flex-direction: column;
+        .title {
+          font-size: $fonts * 9;
+          font-weight: 700;
+          color: $gray-60;
+        }
+        .address {
+          font-size: $fonts * 7.5;
+          font-weight: 300;
+          color: $gray-55;
+        }
+      }
+      .contentRight {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}

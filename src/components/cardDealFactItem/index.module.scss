@@ -1,0 +1,81 @@
+@import "../../assets/styles/mixins";
+@import "../../assets/styles/variables";
+
+.cardDealFactItem {
+  display: flex;
+  position: relative;
+  background-color: $white;
+  border-radius: 6px;
+  padding: $steping * 9 $steping * 10 $steping * 11 $steping * 10;
+  min-width: 245px;
+  .cardDealFactItemContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .cardDealFactItemContentHeader {
+      display: flex;
+      .cardDealFactItemContentHeaderText {
+        display: flex;
+        align-items: center;
+        color: $gray-50;
+        font-size: $fonts * 9;
+        font-weight: 700;
+        .cardDealFactItemContentHeaderTextInfo {
+          margin-left: $steping * 3;
+        }
+      }
+      .cardDealFactItemContentMenu {
+        display: flex;
+        margin-left: $steping * 10;
+        align-items: center;
+      }
+    }
+    .cardDealFactItemContentFooter {
+      display: flex;
+      margin-top: $steping * 9;
+      .cardDealFactItemContentFooterBigNumber {
+        display: flex;
+        align-items: flex-end;
+        font-size: $fonts * 28;
+        font-weight: 200;
+        color: $gray-70;
+        line-height: 1;
+      }
+      .cardDealFactItemContentFooterBigNumberText {
+        display: flex;
+        width: 100%;
+        align-items: flex-end;
+        font-size: $fonts * 9;
+        font-weight: 300;
+        color: $gray-50;
+      }
+      .cardDealFactItemContentFooterProcentUp {
+        display: flex;
+        width: 100%;
+        align-items: flex-end;
+        justify-content: flex-end;
+        .cardDealFactItemContentFooterProcentUpContent {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 24px;
+          border-radius: 4px;
+          background-color: $gray-10;
+          padding: $steping * 4;
+          &:global(.green) {
+            background-color: $trend-positive-10;
+            .ProcentUpContentText {
+              color: $success;
+            }
+          }
+          .ProcentUpContentText {
+            color: $gray-55;
+          }
+          .ProcentUpContentIcon {
+            margin-left: $steping * 4;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+@import "../../../assets/styles/mixins";
+@import "../../../assets/styles/variables";
+
+.mainWrapperDealersPageSecond {
+  display: flex;
+  padding-left: $steping * 5;
+  padding-right: $steping * 5;
+  .mainWrapperDealersPageSecond {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .DealersPageSecondTitle {
+      color: $gray-40;
+      font-size: $fonts * 7.5;
+      padding: $steping * 10 0;
+    }
+  }
+}

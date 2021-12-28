@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import LoginPage from '../pages/login';
-import DealersPage from '../pages/login/dealers';
+import DealersPage from '../pages/dealers';
 
 export interface IRoute {
   path: string;

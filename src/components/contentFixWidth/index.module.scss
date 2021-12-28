@@ -1,0 +1,10 @@
+@import "../../assets/styles/mixins";
+@import "../../assets/styles/variables";
+
+.widthWrapper {
+  display: block;
+  margin-left: $left-menu;
+  .widthWrapperContent {
+    display: block;
+  }
+}

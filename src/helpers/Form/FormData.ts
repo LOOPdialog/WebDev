@@ -2,7 +2,7 @@ import { IFormRenderData } from '~/src/components/formSendUsMessage';
 
 export const formRenderDataLoginPage: Array<IFormRenderData> = [
   {
-    placeholder: 'E-mail',
+    placeholder: 'E-Mail',
     type: 'input',
     itemName: 'email',
     // titleName: 'Username',
@@ -14,7 +14,7 @@ export const formRenderDataLoginPage: Array<IFormRenderData> = [
     ]
   },
   {
-    placeholder: 'Password',
+    placeholder: 'Passwort',
     type: 'password',
     itemName: 'password',
     // titleName: 'Password',

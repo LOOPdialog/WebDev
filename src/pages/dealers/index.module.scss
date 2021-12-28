@@ -1,0 +1,26 @@
+@import "../../assets/styles/mixins";
+@import "../../assets/styles/variables";
+
+.mainWrapperDealersPageWrapper {
+  display: flex;
+  background-color: $gray-10;
+  max-width: calc(100vw - $left-menu);
+  .w_50 {
+    width: 50%;
+  }
+  .mainWrapperDealersPage {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 100vh;
+    height: 100%;
+  }
+
+  .mainWrapperDealersDetailPage {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all 800ms ease-in;
+    border-left: 1px solid $gray-40;
+  }
+}
