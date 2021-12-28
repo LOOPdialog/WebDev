@@ -2,6 +2,9 @@
 @import "../../assets/styles/mixins";
 
 .tableRender {
+  table {
+    table-layout: auto !important;
+  }
   .activStatus {
     display: flex;
     justify-content: center;
@@ -31,5 +34,15 @@
     .text {
       margin-left: $steping * 4;
     }
+  }
+  .tableRowLight {
+    background-color: $white;
+  }
+  .tableRowDark {
+    background-color: $gray-10;
+  }
+  :global(.ant-table-column-title) {
+    font-weight: 700;
+    font-size: $fonts * 7.5;
   }
 }

@@ -79,11 +79,20 @@ const TableDeal = ({ onOpen }: any): React.ReactElement => {
   }
   return (
     <div>
-      <Table className={classes.tableRender} pagination={false} columns={columns} dataSource={data} onChange={onChange} scroll={{ x: 800, y: 700 }} onRow={() => {
-        return {
-          onClick: _event => { onOpen(prev => !prev); }
-        };
-      }} />
+      <Table
+        rowClassName={(_record, index: number): string => index % 2 === 0 ? `${classes.tableRowLight}` : `${classes.tableRowDark}`}
+        className={classes.tableRender}
+        pagination={false}
+        // headerClassName={classes.header}
+        columns={columns}
+        dataSource={data}
+        onChange={onChange}
+        scroll={{ x: 800, y: 700 }}
+        onRow={() => {
+          return {
+            onClick: _event => { onOpen(prev => !prev); }
+          };
+        }} />
     </div>
   );
 };

@@ -22,12 +22,12 @@ const DealersPage = (): React.ReactElement => {
       />
       <div className={clasess.mainWrapperDealersPageWrapper}>
 
-        <div className={`${clasess.mainWrapperDealersPage} ${moreDetail && clasess.w_50}`}>
+        <div className={`${clasess.mainWrapperDealersPage} ${moreDetail && clasess.w_60}`}>
           <FirstSection />
           <SecondSection onOpen={setMoreDetail} />
         </div>
         {moreDetail &&
-          <div className={`${clasess.mainWrapperDealersDetailPage} ${clasess.w_50}`}>
+          <div className={`${clasess.mainWrapperDealersDetailPage}`}>
             <DealersDetailSection />
           </div>
         }
