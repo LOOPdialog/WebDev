@@ -16,6 +16,7 @@
     }
     .LPFContentText {
       display: flex;
+      user-select: none;
       font-size: $fonts * 17;
       font-weight: 700;
       color: $white;

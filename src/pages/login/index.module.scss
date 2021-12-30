@@ -6,12 +6,15 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background-color: $primary-red;
+  background-color: $primary-blue-50;
+  &.vodafone, .vodafone {
+    background-color: $primary-red;
+  }
   .mainWrapperLoginPageBg {
     display: flex;
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background: $gradient-primary-red;
+    background: $gradient-primary-blue;
   }
 }

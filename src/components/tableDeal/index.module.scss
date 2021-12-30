@@ -3,7 +3,9 @@
 
 .tableRender {
   table {
-    table-layout: auto !important;
+    td {
+      padding: $steping * 4 0;
+    }
   }
   .activStatus {
     display: flex;

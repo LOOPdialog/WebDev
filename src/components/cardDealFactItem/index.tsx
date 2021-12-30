@@ -1,7 +1,7 @@
 import Text from 'antd/lib/typography/Text';
 import React from 'react';
 import classes from './index.module.scss';
-import { MoreVerticalIconSvg } from '../../assets/icons/MoreVerticalIcon';
+// import { MoreVerticalIconSvg } from '../../assets/icons/MoreVerticalIcon';
 import { InfoCircleSvg } from '../../assets/icons/InfoCircleIcon';
 import { TrendUpIconSvg } from '../../assets/icons/TrendUpIcon';
 
@@ -28,7 +28,7 @@ const CardDealFactItem = (props: ICardDealFactItem): React.ReactElement => {
             />
           </div>
           <div className={classes.cardDealFactItemContentMenu}>
-            <MoreVerticalIconSvg />
+            {/* <MoreVerticalIconSvg /> */}
           </div>
         </div>
         <div className={classes.cardDealFactItemContentFooter}>

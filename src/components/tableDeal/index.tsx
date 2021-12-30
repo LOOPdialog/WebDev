@@ -1,11 +1,15 @@
 import React from 'react';
-import { Table } from 'antd';
+import { Table, Typography } from 'antd';
 import { EmailIconSvg } from '../../assets/icons/EmailIcon';
 import { GoogleIconSvg } from '../../assets/icons/GoogleIcon';
 import { WhatsappIconSvg } from '../../assets/icons/WhatsappIcon';
 import { FacebookIconSvg } from '../../assets/icons/FacebookIcon';
 import classes from './index.module.scss';
 import { getColumns } from './components/columnsData';
+import { useQuery } from '@apollo/client';
+// import COMPANY_SUCTOMERS from '../../gql/query/companyCustomers';
+import LOGGED from '../../gql/query/loggedUser';
+import dataTableDeal from './dataTableDeal';
 
 interface ISocialIconByName {
   [key: string]: React.ReactNode;
@@ -20,77 +24,49 @@ export const socialIconByName: ISocialIconByName = {
 
 const TableDeal = ({ onOpen }: any): React.ReactElement => {
   const columns: any = getColumns(classes, onOpen);
+  // const { loading, error, data } = useQuery(COMPANY_SUCTOMERS, {
+  //   variables: { company_id: '12312', errorPolicy: 'all' }
+  // });
+  const { loading, error, data } = useQuery(LOGGED, {
+    variables: { company_id: '12312', errorPolicy: 'all' }
+  });
+  console.log(loading, error?.graphQLErrors, data);
 
-  const data = [
-    {
-      key: '1',
-      vodafoneId: 847563534,
-      name: 'Handlername',
-      teammiglieder: 'Stefan Richter',
-      standorte: 1,
-      status: true,
-      kanale: ['whatsapp', 'google', 'email', 'facebook'],
-      nachrichten: 1.230
-    },
-    {
-      key: '2',
-      vodafoneId: 847563532,
-      name: 'Handlername',
-      teammiglieder: 'Stefan Richter',
-      standorte: 1,
-      status: false,
-      kanale: [],
-      nachrichten: 542
-    },
-    {
-      key: '3',
-      vodafoneId: 847563531,
-      name: 'Handlername',
-      teammiglieder: 'Stefan Richter',
-      standorte: 1,
-      status: false,
-      kanale: [],
-      nachrichten: 542
-    },
-    {
-      key: '4',
-      vodafoneId: 847553231,
-      name: 'Handlername',
-      teammiglieder: 'Stefan Richter',
-      standorte: 1,
-      status: false,
-      kanale: [],
-      nachrichten: 542
-    },
-    {
-      key: '5',
-      vodafoneId: 847563231,
-      name: 'Handlername',
-      teammiglieder: 'Stefan Richter',
-      standorte: 1,
-      status: false,
-      kanale: [],
-      nachrichten: 542
-    }
-  ];
+  const dataL = dataTableDeal;
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function onChange(pagination, filters, sorter, extra) {
-    console.log('params', pagination, filters, sorter, extra);
+    // console.log('params', pagination, filters, sorter, extra);
   }
+
   return (
     <div>
       <Table
         rowClassName={(_record, index: number): string => index % 2 === 0 ? `${classes.tableRowLight}` : `${classes.tableRowDark}`}
         className={classes.tableRender}
-        pagination={false}
-        // headerClassName={classes.header}
         columns={columns}
-        dataSource={data}
+        dataSource={dataL}
         onChange={onChange}
-        scroll={{ x: 800, y: 700 }}
+        scroll={{
+          x: 1200
+        }}
+        components={{
+          body: {
+            cell: (cell) => {
+              return (
+                <td {...cell} >
+                  <Typography.Paragraph>
+                    {cell?.children?.map((item: string): string => item)}
+                  </Typography.Paragraph>
+                </td>);
+            }
+          }
+        }}
+        sticky
+        bordered
         onRow={() => {
           return {
-            onClick: _event => { onOpen(prev => !prev); }
+            // onClick: _event => { console.log(record, rowIndex, _event); onOpen(prev => !prev); }
           };
         }} />
     </div>

@@ -7,7 +7,7 @@ const FirstSection = ({ onOpen }: any): React.ReactElement => {
   return (
     <div className={classes.mainWrapperDealersPageSecond}>
       <div className={classes.mainWrapperDealersPageSecond}>
-        <Text className={classes.DealersPageSecondTitle}>Händlerliste</Text>
+        <Text className={`${classes.DealersPageSecondTitle} smallTextBold`}>Händlerliste</Text>
         <TableDeal onOpen={onOpen}/>
       </div>
     </div>

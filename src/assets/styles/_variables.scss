@@ -3,6 +3,8 @@ $fonts: 2px;
 
 // Constant
 $left-menu: 80px;
+$dealers-detail-width: 520px;
+$top-menu-list: 60px;
 
 // Colors
 
@@ -14,10 +16,11 @@ $error: red;
 $blue: blue;
 $primary-blue-30: #40929F3D;
 $primary-blue-50: #40929F;
+$primary-blue-50-hover: #357782;
 $gray-10: #f4f5f5;
 $gray-20: #e2e2e2;
 $gray-40: #B7B8B8;
-$gray-50: gray;
+$gray-50: gray ;
 $gray-55: #4A4D4E;
 $gray-60: #444444;
 $gray-70: #333333;
@@ -27,6 +30,7 @@ $whatsapp: #25D366;
 
 // Gradients
 
+$gradient-primary-blue: linear-gradient(60deg, #00000070, #fff0);
 $gradient-primary-red: linear-gradient(90deg, #00000070, #fff0);
 
 // $primary:
@@ -42,3 +46,10 @@ $blue-text: $blue;
 // BackGround
 $second-bg: #f5f5f5;
 $body-bg: $white;
+$link-gradient: radial-gradient(#80808054, #8a888829);
+
+// Helpers
+
+@function linkShadow() {
+  @return 0px 0px 11px #5553;
+}

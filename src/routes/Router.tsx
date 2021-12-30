@@ -2,6 +2,7 @@ import React from 'react';
 import { privateRoutes, publicRoutes } from '.';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from '../pages/login';
+import Page from '../components/page/index';
 
 const Router: React.FC = () => {
   const isAuth = true;
@@ -15,7 +16,7 @@ const Router: React.FC = () => {
           return (
             <Route
               path={`${route.path}${route.child ? '/*' : ''}`}
-              element={<ComponentL />}
+              element={<Page title={route.titleName}><ComponentL /></Page>}
               key={route.path}
             />
           );
@@ -25,11 +26,11 @@ const Router: React.FC = () => {
           !isAuth
             ? <Route
               path="*"
-              element={<LoginPage />}
+              element={<Page title='Login'><LoginPage /></Page>}
             />
             : <Route
               path="*"
-              element={<LoginPage />}
+              element={<Page title='Login'><LoginPage /></Page>}
             />
         }
       </Routes>

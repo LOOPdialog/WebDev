@@ -27,6 +27,16 @@
       border-radius: 6px;
       margin: $steping * 5.5;
       margin-top: $steping * 8;
+      a {
+        display: inherit;
+      }
+      :hover {
+        box-shadow: linkShadow();
+        cursor: pointer;
+        > * {
+          background: $link-gradient;
+        }
+      }
       &.active {
         background-color: $primary-blue-30;
       }
@@ -42,6 +52,16 @@
       justify-content: center;
       border-radius: 6px;
       margin-top: $steping * 12;
+      a {
+        display: inherit;
+      }
+      :hover {
+        box-shadow: linkShadow();
+        cursor: pointer;
+        > * {
+          background: $link-gradient;
+        }
+      }
       .poweroff {
         svg {
           width: 22px;

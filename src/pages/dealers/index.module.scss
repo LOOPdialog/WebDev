@@ -3,24 +3,24 @@
 
 .mainWrapperDealersPageWrapper {
   display: flex;
-  width: 100%;
+  width: auto;
   background-color: $gray-10;
   max-width: calc(100vw - $left-menu);
   .w_60 {
-    width: 60%;
+    width: calc(100vw - $left-menu - $dealers-detail-width);
   }
   .mainWrapperDealersPage {
     display: flex;
     flex-direction: column;
     position: relative;
-    min-height: 100vh;
+    min-height: calc(100vh - $top-menu-list);
     height: 100%;
   }
 
   .mainWrapperDealersDetailPage {
     display: flex;
-    width: 40%;
-    max-width: 519px;
+    // width: 40%;
+    width: $dealers-detail-width;
     flex-direction: column;
     position: relative;
     transition: all 800ms ease-in;

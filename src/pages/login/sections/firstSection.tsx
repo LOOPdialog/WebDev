@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './fisrtSection.module.scss';
-import LogoVodafone from '../../../assets/images/LogoVodafone.png';
-import { Image } from 'antd';
+import LogoLoop from '../../../assets/images/LogoLoop.png';
+import { Image, Typography } from 'antd';
 
 const FirstSection = () => {
   return (
@@ -11,14 +11,16 @@ const FirstSection = () => {
           <Image
             width={86}
             preview={false}
-            src={LogoVodafone}
+            src={LogoLoop}
           />
         </div>
         <div className={classes.LPFContentText}>
-          CONNECT
+          <Typography.Title>
+            LOOP
+          </Typography.Title>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

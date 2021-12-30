@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Input, FormInstance } from 'antd';
-import { FormBtn } from '../buttonFrom';
+import { FormBtn } from '../buttonForm';
 import { InfoIconSvg } from '../../assets/icons/InfoIcon';
 import { ReadySvg } from '../../assets/icons/Ready';
 import classes from './formSendUsMessage.module.scss';

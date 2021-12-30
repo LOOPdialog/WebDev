@@ -1,0 +1,55 @@
+@import "./variables";
+
+// ant-design
+
+:global(#root) {
+  :global(a.ant-typography) {
+    &:hover {
+      color: $gray-10;
+    }
+  }
+  :global(a.ant-typography) {
+    font-size: 18px;
+    font-weight: 300;
+    color: $primary-blue-50;
+  }
+  :global(div.ant-typography, .ant-typography p) {
+    font-size: 18px;
+    font-weight: 300;
+    color: $gray-50;
+  }
+  :global(h1.ant-typography) {
+    font-size: 24px;
+    font-weight: 700;
+    color: $gray-70;
+  }
+  :global(h2.ant-typography) {
+    font-size: 20px;
+    font-weight: 700;
+    color: $gray-60;
+  }
+  :global(h3.ant-typography) {
+    font-size: 20px;
+    font-weight: 300;
+    color: $gray-50;
+  }
+  :global(.smallTextBold) {
+    font-weight: 700;
+    color: $gray-50;
+    font-size: $fonts * 7.5;
+  }
+  :global(.small) {
+    font-weight: 300;
+    font-size: $fonts * 7.5;
+  }
+  :global(.tiny) {
+    font-weight: 400;
+    font-size: $fonts * 6;
+  }
+  :global(.linkShadow) {
+    box-shadow: linkShadow();
+    > *:first-child {
+      background: $link-gradient;
+    }
+  }
+}

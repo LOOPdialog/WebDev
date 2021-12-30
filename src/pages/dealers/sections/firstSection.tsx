@@ -6,8 +6,8 @@ import Text from 'antd/lib/typography/Text';
 const FirstSection = (): React.ReactElement => {
   return (
     <div className={classes.mainWrapperDealersPageFirst}>
-      <div className={classes.mainWrapperDealersPageFirst}>
-        <Text className={classes.DealersPageFirstTitle}>Kennzahlen</Text>
+      <div className={classes.mainWrapperDealersPageFirstContent}>
+        <Text className={`${classes.DealersPageFirstTitle} smallTextBold`}>Kennzahlen</Text>
         <div className={classes.DealersPageFirstItems}>
           <CardDealFactItem
             title='Teilnahmequote'

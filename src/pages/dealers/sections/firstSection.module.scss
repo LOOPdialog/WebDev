@@ -5,12 +5,13 @@
   display: flex;
   padding-left: $steping * 5;
   padding-right: $steping * 5;
-  .mainWrapperDealersPageFirst {
+  width: 100%;
+  overflow-x: auto;
+  .mainWrapperDealersPageFirstContent {
     display: flex;
     flex-direction: column;
     .DealersPageFirstTitle {
       color: $gray-40;
-      font-size: $fonts * 7.5;
       padding: $steping * 10 0;
     }
     .DealersPageFirstItems {

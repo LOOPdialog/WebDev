@@ -1,20 +1,99 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import React from 'react';
 import { InfoIconSvg } from '../../../assets/icons/InfoIcon';
 import { SearchOutlined } from '@ant-design/icons';
 import { socialIconByName } from '../index';
-import { Col, Row } from 'antd';
+import { Button, Col, Input, Row, Space } from 'antd';
+import Highlighter from 'react-highlight-words';
 
 export const getColumns: any = (classes, onOpen) => {
+  let state: any = {
+    searchText: '',
+    searchedColumn: ''
+  };
+
+  const handleSearch = (selectedKeys, confirm, dataIndex) => {
+    confirm();
+    state = {
+      searchText: selectedKeys[0],
+      searchedColumn: dataIndex
+    };
+  };
+
+  const handleReset = clearFilters => {
+    clearFilters();
+    state.searchText = '';
+  };
+
+  const getColumnSearchProps = dataIndex => ({
+    filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }: any) => (
+      <div style={{ padding: 8 }}>
+        <Input
+          ref={node => {
+            state.searchInput = node;
+          }}
+          placeholder={`Search ${dataIndex}`}
+          value={selectedKeys[0]}
+          onChange={(e): void => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+          onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
+          style={{ marginBottom: 8, display: 'block' }}
+        />
+        <Space>
+          <Button
+            type="primary"
+            onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
+            icon={<SearchOutlined />}
+            size="small"
+            style={{ width: 90 }}
+          >
+            Search
+          </Button>
+          <Button onClick={() => handleReset(clearFilters)} size="small" style={{ width: 90 }}>
+            Reset
+          </Button>
+          <Button
+            type="link"
+            size="small"
+            onClick={() => {
+              confirm({ closeDropdown: false });
+              state = ({
+                searchText: selectedKeys[0],
+                searchedColumn: dataIndex
+              });
+            }}
+          >
+            Filter
+          </Button>
+        </Space>
+      </div>
+    ),
+    filterIcon: filtered => <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />,
+    onFilter: (value, record) =>
+      record[dataIndex]
+        ? record[dataIndex].toString().toLowerCase().includes(value.toLowerCase())
+        : '',
+    onFilterDropdownVisibleChange: visible => {
+      if (visible) {
+        setTimeout(() => state.searchInput.select(), 100);
+      }
+    },
+    render: text =>
+      state.searchedColumn === dataIndex
+        ? (<Highlighter
+          highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
+          searchWords={[state.searchText]}
+          autoEscape
+          textToHighlight={text ? text.toString() : ''}
+        />)
+        : (text)
+  });
   return [
     {
       title: 'Vodafone ID',
       dataIndex: 'vodafoneId',
-      filterDropdown: () => (
-        <div style={{ padding: 8 }}>
-        </div>
-      ),
       filterIcon: filtered => <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />,
-      sorter: (a, b) => a.age - b.age
+      sorter: (a, b) => a.vodafoneId - b.vodafoneId,
+      ...getColumnSearchProps('vodafoneId')
     },
     {
       title: 'Name',
@@ -27,52 +106,42 @@ export const getColumns: any = (classes, onOpen) => {
         {
           text: 'Jim',
           value: 'Jim'
-        },
-        {
-          text: 'Submenu',
-          value: 'Submenu',
-          children: [
-            {
-              text: 'Green',
-              value: 'Green'
-            },
-            {
-              text: 'Black',
-              value: 'Black'
-            }
-          ]
         }
       ],
-      // specify the condition of filtering result
-      // here is that finding the name started with `value`
       onFilter: (value, record) => record.name.indexOf(value) === 0,
-      sorter: (a, b) => a.name.length - b.name.length,
-      filterIcon: filtered => <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />
-      // sortDirections: ['descend']
+      sorter: (a, b) => a.name - b.name,
+      filterIcon: filtered => <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />,
+      ...getColumnSearchProps('name')
     },
     {
       title: 'Teammiglieder',
       dataIndex: 'teammiglieder',
       sorter: (a, b) => a.name.length - b.name.length,
-      filterDropdown: () => (
-        <div style={{ padding: 8 }}>
-        </div>
-      ),
-      filterIcon: filtered => <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />
+      filterIcon: filtered => <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />,
+      ...getColumnSearchProps('teammiglieder')
     },
     {
       title: 'Standorte',
       dataIndex: 'standorte',
-      sorter: (a, b) => a.name.length - b.name.length
+      sorter: (a, b) => a.teammiglieder - b.teammiglieder
     },
     {
       title: 'Status',
       dataIndex: 'status',
-      sorter: (a, b) => a.age - b.age,
-      filterDropdown: () => (
-        <div style={{ padding: 8 }}>
-        </div>
-      ),
+      filters: [
+        {
+          text: 'Aktiv',
+          value: true
+        },
+        {
+          text: 'Inaktiv',
+          value: false
+        }
+      ],
+      onFilter: (value: boolean, record) => {
+        return record.status === value;
+      },
+      sorter: (a, b) => a.standorte.length - b.standorte.length,
       render: (status) => {
         return (<Row gutter={8} justify="start">
           {status
@@ -86,11 +155,26 @@ export const getColumns: any = (classes, onOpen) => {
     {
       title: 'Kanale',
       dataIndex: 'kanale',
-      sorter: (a, b) => a.age - b.age,
-      filterDropdown: () => (
-        <div style={{ padding: 8 }}>
-        </div>
-      ),
+      sorter: (a, b) => a.kanale.length - b.kanale.length,
+      filters: [
+        {
+          text: 'Whatsapp',
+          value: 'whatsapp'
+        },
+        {
+          text: 'Google',
+          value: 'google'
+        },
+        {
+          text: 'Email',
+          value: 'email'
+        },
+        {
+          text: 'Facebook',
+          value: 'facebook'
+        }
+      ],
+      onFilter: (value: string, record) => record.kanale.indexOf(value) === 0,
       render: (kanale: string[]) => {
         const render = kanale?.map(item => {
           return socialIconByName[item] || null;
@@ -98,7 +182,7 @@ export const getColumns: any = (classes, onOpen) => {
         return (<Row gutter={8} justify="space-around">
           {(!render.length && '-') ||
             render.map((item, index) => {
-              return (<Col key={`${index}_kanale`} span={3}>{item}</Col>);
+              return (<Col key={`${index}_kanale`} span={4}>{item}</Col>);
             })}
         </Row>
         );
@@ -107,25 +191,25 @@ export const getColumns: any = (classes, onOpen) => {
     {
       title: 'Nachrichten',
       dataIndex: 'nachrichten',
-      // defaultSortOrder: 'descend',
-      sorter: (a, b) => a.age - b.age,
-      filterDropdown: () => (
-        <div style={{ padding: 8 }}>
-        </div>
-      )
+      sorter: (a, b) => a.nachrichten - b.nachrichten
     },
     {
       title: '',
-      dataIndex: 'info',
+      width: 50,
+      key: 'info',
+      fixed: 'right',
       render: _info => (
-        <InfoIconSvg />
+        <div onClick={(_event) => { onOpen(prev => !prev); }}>
+          <InfoIconSvg style={{ cursor: 'pointer' }} />
+        </div>
       ),
       filterDropdown: () => (
         <div style={{ padding: 0 }}>
         </div>
       ),
-      filterIcon: _filtered => <InfoIconSvg />,
-      onclick: () => { onOpen(prev => !prev); }
+      filterIcon: _filtered => <InfoIconSvg style={{
+        transform: 'translateX(-26%)'
+      }} />
     }
   ];
 };
