@@ -64,6 +64,7 @@ const TableDeal = ({ onOpen }: any): React.ReactElement => {
         }}
         sticky
         bordered
+        pagination={false}
         onRow={() => {
           return {
             // onClick: _event => { console.log(record, rowIndex, _event); onOpen(prev => !prev); }
