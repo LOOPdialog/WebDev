@@ -8,26 +8,46 @@ import { Image } from 'antd';
 import { NavigateIconSvg } from '../../../assets/icons/NavigateIcon';
 import { LocationIconSvg } from '../../../assets/icons/LocationIcon';
 
-const DealersDetailSection = () => {
+interface IDealersDetailSection {
+  deal?: {
+    id: string;
+    standorte: number;
+    status: string;
+    lastDate: string;
+    name: string;
+  };
+  person?: {
+    fullname: string;
+    birthday: string;
+    address: string;
+    firma: string;
+    shops?: Array<{
+      name: string;
+      address: string;
+    }>;
+  };
+}
+
+const DealersDetailSection = ({ deal, person }: IDealersDetailSection): React.ReactElement => {
   return (
     <div className={classes.dealersDetailSectionPage}>
       <div className={classes.dealersDetailSectionPageHeader}>
         <div className={classes.dealersDetailHeaderTitle}>
-          <div className={classes.dealersDetailHeaderTitleText}>Händlername</div>
+          <div className={classes.dealersDetailHeaderTitleText}>{deal?.name || ''}Händlername</div>
           <div className={classes.dealersDetailHeaderTitlePhone}><PhoneOutlined /></div>
         </div>
         <div className={classes.dealersDetailHeaderBody}>
           <div>
             <span>ID</span>
-            <span>457665468</span>
+            <span>{deal?.id || ''}457665468</span>
           </div>
           <div>
             <span>Standorte</span>
-            <span>2</span>
+            <span>{deal?.standorte || ''}2</span>
           </div>
           <div>
             <span>Status</span>
-            <span>Aktiv seit 24.04.2019</span>
+            <span>{deal?.status || ''}Aktiv seit {deal?.lastDate || ''}24.04.2019</span>
           </div>
         </div>
       </div>
@@ -38,14 +58,14 @@ const DealersDetailSection = () => {
         </div>
         <div className={classes.dealersDetailSectionPageCustomerInfo}>
           <div className={classes.dealersDetailSectionPageCustomerInfoText}>
-            <div className={classes.title}>Marc Lobinger</div>
+            <div className={classes.title}>{person?.fullname || ''}Marc Lobinger</div>
             <div className={classes.preTitle}>Geburtsdatum</div>
-            <div className={classes.text}>14.03.1998 (In 65 Tagen)</div>
+            <div className={classes.text}>{person?.birthday || ''}14.03.1998 (In 65 Tagen)</div>
             <div className={classes.preTitle}>Adresse</div>
-            <div className={classes.text}>Bergstraße 4<br />
+            <div className={classes.text}>{person?.address || ''}Bergstraße 4<br />
               48064 Rostock</div>
             <div className={classes.preTitle}>Firma</div>
-            <div className={classes.text}>Standort</div>
+            <div className={classes.text}>{person?.firma || ''}Standort</div>
             <div className={classes.link}>Mehr Informationen<span className={classes.icon}><RightOutlined /></span></div>
           </div>
           <div className={classes.dealersDetailSectionPageCustomerInfoImg}>

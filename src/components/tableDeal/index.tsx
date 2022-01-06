@@ -5,10 +5,9 @@ import { GoogleIconSvg } from '../../assets/icons/GoogleIcon';
 import { WhatsappIconSvg } from '../../assets/icons/WhatsappIcon';
 import { FacebookIconSvg } from '../../assets/icons/FacebookIcon';
 import classes from './index.module.scss';
-import { getColumns } from './components/columnsData';
+import { useGetColumns } from './components/columnsData';
 import { useQuery } from '@apollo/client';
-// import COMPANY_SUCTOMERS from '../../gql/query/companyCustomers';
-import LOGGED from '../../gql/query/loggedUser';
+import COMPANY_SUCTOMERS from '../../gql/query/companyCustomers';
 import dataTableDeal from './dataTableDeal';
 
 interface ISocialIconByName {
@@ -23,15 +22,20 @@ export const socialIconByName: ISocialIconByName = {
 };
 
 const TableDeal = ({ onOpen }: any): React.ReactElement => {
-  const columns: any = getColumns(classes, onOpen);
+  const useSetIdDealer = (id) => {
+    const { loading, error, data } = useQuery(COMPANY_SUCTOMERS, {
+      variables: { company_id: `${id}` }
+    });
+    console.log('2', loading, error?.graphQLErrors, data);
+  };
+  const columns: any = useGetColumns(classes, onOpen, useSetIdDealer);
   // const { loading, error, data } = useQuery(COMPANY_SUCTOMERS, {
   //   variables: { company_id: '12312', errorPolicy: 'all' }
   // });
-  const { loading, error, data } = useQuery(LOGGED, {
-    variables: { company_id: '12312', errorPolicy: 'all' }
+  const { loading, error, data } = useQuery(COMPANY_SUCTOMERS, {
+    variables: { company_id: '2ac9a776-b8bd-4663-b8f9-31f4f34a1828' }
   });
   console.log(loading, error?.graphQLErrors, data);
-
   const dataL = dataTableDeal;
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

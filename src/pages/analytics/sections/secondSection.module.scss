@@ -1,0 +1,11 @@
+@import "../../../assets/styles/mixins";
+@import "../../../assets/styles/variables";
+
+.mainWrapperAnalyticsPageSecond {
+  display: flex;
+  position: relative;
+  overflow-x: auto;
+  > div:not(div:first-child) {
+    margin-left: $steping * 10;
+  }
+}

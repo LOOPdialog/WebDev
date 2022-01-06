@@ -6,7 +6,7 @@ import { socialIconByName } from '../index';
 import { Button, Col, Input, Row, Space } from 'antd';
 import Highlighter from 'react-highlight-words';
 
-export const getColumns: any = (classes, onOpen) => {
+export const useGetColumns: any = (classes, onOpen, setIdDealer) => {
   let state: any = {
     searchText: '',
     searchedColumn: ''
@@ -198,8 +198,8 @@ export const getColumns: any = (classes, onOpen) => {
       width: 50,
       key: 'info',
       fixed: 'right',
-      render: _info => (
-        <div onClick={(_event) => { onOpen(prev => !prev); }}>
+      render: info => (
+        <div onClick={(_event) => { onOpen(prev => !prev); console.log(info.vodafoneId); setIdDealer(info.vodafoneId); }}>
           <InfoIconSvg style={{ cursor: 'pointer' }} />
         </div>
       ),

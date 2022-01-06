@@ -1,0 +1,10 @@
+@import "../../assets/styles/mixins";
+@import "../../assets/styles/variables";
+
+.mainWrapperAnalyticsPageWrapper {
+  display: flex;
+  position: relative;
+  min-height: calc(100vh - 60px);
+  overflow: hidden;
+}
+

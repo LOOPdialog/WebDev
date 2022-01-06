@@ -25,8 +25,8 @@ export const formRenderDataLoginPage: Array<IFormRenderData> = [
         message: 'Password has be required'
       },
       {
-        min: 10,
-        message: 'Min length 10'
+        min: 6,
+        message: 'Min length 6'
       }
     ]
   }

@@ -68,6 +68,15 @@
               color: $success;
             }
           }
+          &:global(.red) {
+            background-color: $trend-red-10;
+            .ProcentUpContentText {
+              color: $error;
+            }
+            .ProcentUpContentIcon {
+              transform: rotateY(180deg) rotateZ(180deg);
+            }
+          }
           .ProcentUpContentText {
             color: $gray-55;
           }

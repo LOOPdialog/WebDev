@@ -5,7 +5,8 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  createHttpLink
+  createHttpLink,
+  ApolloLink
 } from '@apollo/client';
 import './assets/styles/styles.scss';
 import './assets/styles/custom.module.scss';
@@ -13,6 +14,8 @@ import main from './gql/writeData/main';
 import GET_MAIN from './gql/query/getMain';
 import { setContext } from '@apollo/client/link/context';
 import { ConfigProvider } from 'antd';
+import errorLink from './helpers/apollo/onError';
+import configProviderData from './helpers/provider/configProviderData';
 
 const httpLink = createHttpLink({
   uri: process.env.REACT_APP_GRAPHQL_CLIENT_URI || ''
@@ -29,8 +32,9 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  link: authLink.concat(httpLink),
-  // uri: process.env.REACT_APP_GRAPHQL_CLIENT_URI,
+  link: ApolloLink.from([
+    errorLink,
+    authLink.concat(httpLink)]),
   cache: new InMemoryCache()
 });
 
@@ -41,16 +45,7 @@ client.writeQuery({
   }
 });
 
-ConfigProvider.config({
-  theme: {
-    primaryColor: 'RGB(74, 77, 78)',
-    errorColor: '#ff4d4f',
-    warningColor: '#faad14',
-    successColor: '#52c41a',
-    infoColor: '#1890ff',
-    processingColor: 'blue'
-  }
-});
+ConfigProvider.config(configProviderData);
 
 ReactDOM.render(
   <ApolloProvider client={client}>

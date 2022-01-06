@@ -5,16 +5,20 @@ import classes from './index.module.scss';
 import { InfoCircleSvg } from '../../assets/icons/InfoCircleIcon';
 import { TrendUpIconSvg } from '../../assets/icons/TrendUpIcon';
 
+export type moreProcentClass = null | 'green' | 'gray' | 'red';
+
 interface ICardDealFactItem {
   title: string;
   bigNumber: number;
   bigNumberText: string;
   moreProcent: string;
-  moreProcentClass?: 'green' | 'gray';
+  moreProcentClass?: moreProcentClass;
+  link?: string;
 }
 
 const CardDealFactItem = (props: ICardDealFactItem): React.ReactElement => {
   const { title, bigNumber, bigNumberText, moreProcent, moreProcentClass = 'gray' } = props;
+  const moreProcentClassIcon = moreProcentClass === 'green' ? '#23BE77' : moreProcentClass === 'red' ? 'rgb(190, 35, 86)' : '#4A4D4E';
   return (
     <div className={classes.cardDealFactItem}>
       <div className={classes.cardDealFactItemContent}>
@@ -42,8 +46,8 @@ const CardDealFactItem = (props: ICardDealFactItem): React.ReactElement => {
             <div className={`${classes.cardDealFactItemContentFooterProcentUpContent} ${moreProcentClass}`}>
               <Text className={classes.ProcentUpContentText}>{moreProcent}</Text>
               <TrendUpIconSvg
-                className={classes.ProcentUpContentIcon}
-                fill={`${moreProcentClass === 'green' ? '#23BE77' : '#4A4D4E'}`} />
+                className={`${classes.ProcentUpContentIcon}`}
+                fill={`${moreProcentClassIcon}`} />
             </div>
           </div>
         </div>

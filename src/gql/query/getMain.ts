@@ -5,6 +5,7 @@ const GET_MAIN = gql`
   query WriteTodo {
     main {
       themed
+      isAuth
     }
   }
 `;

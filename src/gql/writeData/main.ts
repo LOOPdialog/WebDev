@@ -1,5 +1,7 @@
 const main = {
-  themed: 'loop'
+  themed: 'loop',
+  isAuth: false,
+  __typename: 'MAIN'
 };
 
 export default main;

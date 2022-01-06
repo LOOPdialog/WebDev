@@ -1,0 +1,12 @@
+@import "../../../assets/styles/mixins";
+@import "../../../assets/styles/variables";
+
+.rightContentWrapperItem {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  .rightContentWrapperItemTitle {
+    color: $gray-40;
+    padding: $steping * 10 0;
+  }
+}

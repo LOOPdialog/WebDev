@@ -1,0 +1,10 @@
+@import "../../assets/styles/mixins";
+@import "../../assets/styles/variables";
+
+.rightContentWrapper {
+  display: flex;
+  padding-left: $steping * 5;
+  padding-right: $steping * 5;
+  width: 100%;
+  background-color: $gray-10;
+}
