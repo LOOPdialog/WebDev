@@ -5,6 +5,7 @@ const COMPANY_SUCTOMERS = gql`
       companyCustomers(company_id: $company_id) {
         id
         birthday
+        opportunitiesCount
         address {
           id
           street

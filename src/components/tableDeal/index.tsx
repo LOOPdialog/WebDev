@@ -5,9 +5,7 @@ import { GoogleIconSvg } from '../../assets/icons/GoogleIcon';
 import { WhatsappIconSvg } from '../../assets/icons/WhatsappIcon';
 import { FacebookIconSvg } from '../../assets/icons/FacebookIcon';
 import classes from './index.module.scss';
-import { useGetColumns } from './components/columnsData';
-import { useQuery } from '@apollo/client';
-import COMPANY_SUCTOMERS from '../../gql/query/companyCustomers';
+import { getColumns } from './components/columnsData';
 import dataTableDeal from './dataTableDeal';
 
 interface ISocialIconByName {
@@ -21,25 +19,11 @@ export const socialIconByName: ISocialIconByName = {
   facebook: <FacebookIconSvg width={20} height={20} />
 };
 
-const TableDeal = ({ onOpen }: any): React.ReactElement => {
-  const useSetIdDealer = (id) => {
-    const { loading, error, data } = useQuery(COMPANY_SUCTOMERS, {
-      variables: { company_id: `${id}` }
-    });
-    console.log('2', loading, error?.graphQLErrors, data);
-  };
-  const columns: any = useGetColumns(classes, onOpen, useSetIdDealer);
-  // const { loading, error, data } = useQuery(COMPANY_SUCTOMERS, {
-  //   variables: { company_id: '12312', errorPolicy: 'all' }
-  // });
-  const { loading, error, data } = useQuery(COMPANY_SUCTOMERS, {
-    variables: { company_id: '2ac9a776-b8bd-4663-b8f9-31f4f34a1828' }
-  });
-  console.log(loading, error?.graphQLErrors, data);
+const TableDeal = ({ onOpen, setVariables }: any): React.ReactElement => {
+  const columns: any = getColumns(classes, onOpen, setVariables);
   const dataL = dataTableDeal;
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  function onChange(pagination, filters, sorter, extra) {
+  function onChange(pagination, filters, sorter, extra) { // eslint-disable-line @typescript-eslint/no-unused-vars
     // console.log('params', pagination, filters, sorter, extra);
   }
 

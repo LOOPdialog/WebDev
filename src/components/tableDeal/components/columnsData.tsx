@@ -6,7 +6,7 @@ import { socialIconByName } from '../index';
 import { Button, Col, Input, Row, Space } from 'antd';
 import Highlighter from 'react-highlight-words';
 
-export const useGetColumns: any = (classes, onOpen, setIdDealer) => {
+export const getColumns: (classes: any, onOpen: any, setIdDealer: any) => any[] = (classes, onOpen, setIdDealer) => {
   let state: any = {
     searchText: '',
     searchedColumn: ''
@@ -199,7 +199,16 @@ export const useGetColumns: any = (classes, onOpen, setIdDealer) => {
       key: 'info',
       fixed: 'right',
       render: info => (
-        <div onClick={(_event) => { onOpen(prev => !prev); console.log(info.vodafoneId); setIdDealer(info.vodafoneId); }}>
+        <div onClick={(_event) => {
+          onOpen(prev => {
+            return {
+              ...prev,
+              id: info.vodafoneId,
+              firstClick: true,
+              open: (info?.vodafoneId !== prev?.id ? prev.open : !prev.open) || !prev?.firstClick
+            };
+          }); setIdDealer({ company_id: `${info.vodafoneId}` });
+        }}>
           <InfoIconSvg style={{ cursor: 'pointer' }} />
         </div>
       ),

@@ -2,7 +2,8 @@ export enum EFormDataKeywords {
   EMAIL = 'email',
   PHONE = 'phone',
   PASSWORD = 'password',
-  USERNAME = 'username'
+  USERNAME = 'username',
+  UNKNOW = 'unknow'
 }
 
 // No function use in FormData - method delete all functions in rules

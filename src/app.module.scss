@@ -10,15 +10,3 @@ body {
   font-family: NunitoSans, sans-serif;
   background-color: $body-bg !important;
 }
-
-:global(.shadow-1) {
-  box-shadow: 0px 0px 20px RGBA(0, 0, 0, 0.2);
-}
-
-:global(.shadow-2) {
-  box-shadow: 0px 0px 20px RGBA(0, 0, 0, 0.1);
-}
-
-:global(.shadow-3) {
-  box-shadow: 0px 0px 20px RGBA(0, 0, 0, 0.06);
-}

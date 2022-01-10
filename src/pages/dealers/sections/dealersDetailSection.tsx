@@ -33,21 +33,21 @@ const DealersDetailSection = ({ deal, person }: IDealersDetailSection): React.Re
     <div className={classes.dealersDetailSectionPage}>
       <div className={classes.dealersDetailSectionPageHeader}>
         <div className={classes.dealersDetailHeaderTitle}>
-          <div className={classes.dealersDetailHeaderTitleText}>{deal?.name || ''}Händlername</div>
+          <div className={classes.dealersDetailHeaderTitleText}>{deal?.name || ''}</div>
           <div className={classes.dealersDetailHeaderTitlePhone}><PhoneOutlined /></div>
         </div>
         <div className={classes.dealersDetailHeaderBody}>
           <div>
             <span>ID</span>
-            <span>{deal?.id || ''}457665468</span>
+            <span>{deal?.id || ''}</span>
           </div>
           <div>
             <span>Standorte</span>
-            <span>{deal?.standorte || ''}2</span>
+            <span>{deal?.standorte || ''}</span>
           </div>
           <div>
             <span>Status</span>
-            <span>{deal?.status || ''}Aktiv seit {deal?.lastDate || ''}24.04.2019</span>
+            <span>{deal?.status || ''}Aktiv seit {deal?.lastDate || ''}</span>
           </div>
         </div>
       </div>

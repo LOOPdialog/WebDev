@@ -36,7 +36,8 @@
       color: $black;
     }
     .inputFieldInfoIcon {
-      display: flex;
+      // display: flex;
+      display: none;
       position: absolute;
       right: 20px;
       top: 14px;

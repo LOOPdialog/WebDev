@@ -1,7 +1,7 @@
 const dataTableDeal = [
   {
     key: '1',
-    vodafoneId: 847563534,
+    vodafoneId: '2ac9a776-b8bd-4663-b8f9-31f4f34a1828',
     name: 'Handlername',
     teammiglieder: 'Stefan Richter',
     standorte: 1,
