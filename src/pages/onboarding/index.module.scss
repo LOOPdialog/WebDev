@@ -4,4 +4,38 @@
 .mainWrapperOnboardingPage {
   display: flex;
   position: relative;
+  min-height: calc(100vh - $top-menu-list);
+}
+.onboardingPageContentLink {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  .linkIcon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid $gray-50;
+    border-radius: 50%;
+    margin-right: $steping * 3;
+  }
+  .text {
+    margin: 0;
+    color: $gray-50;
+  }
+  &:global(.active) {
+    .linkIcon {
+      border-color: $primary-blue-50;
+    }
+    .text {
+      color: $primary-blue-50;
+    }
+    &::before {
+      content: "";
+      width: 100%;
+      position: absolute;
+      bottom: -20px;
+      border-bottom: 4px solid $primary-blue-50;
+    }
+  }
 }

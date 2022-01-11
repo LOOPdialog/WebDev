@@ -46,6 +46,22 @@
     font-weight: 400;
     font-size: $fonts * 6;
   }
+  :global(.bold) {
+    font-weight: 700;
+    font-size: 18px;
+  }
+  :global(.mb-0) {
+    margin-bottom: 0;
+  }
+  :global(.small-size) {
+    font-size: $fonts * 7.5;
+  }
+  :global(.tiny-size) {
+    font-size: $fonts * 6;
+  }
+  :global(.bold-size) {
+    font-size: 18px;
+  }
   :global(.linkShadow) {
     box-shadow: linkShadow();
     > *:first-child {

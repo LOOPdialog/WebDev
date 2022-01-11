@@ -1,0 +1,86 @@
+@import "../../../assets/styles/mixins";
+@import "../../../assets/styles/variables";
+
+.mainWrapperOnboardingPageFirst {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  margin-top: $steping * 12;
+  .onboardingPageFirstTitle {
+    display: flex;
+    flex-direction: column;
+  }
+  .onboardingPageFirstContent {
+    display: flex;
+    position: relative;
+    margin-bottom: $steping * 6;
+    iframe {
+      width: 100%;
+      min-height: 70vh;
+    }
+  }
+  .onboardingPageFirstFooter {
+    display: flex;
+    width: 100%;
+  }
+  .onboardingPageFirstFooter {
+    display: flex;
+    position: relative;
+    align-items: center;
+    .text {
+    }
+    .input {
+      display: flex;
+      margin-left: $steping * 10;
+      .search {
+        :global(.ant-input-group) {
+          border-radius: 6px;
+          border: 1px solid $gray-40;
+        }
+        :global(.ant-input-affix-wrapper) {
+          border: 0;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          border-top-left-radius: 6px;
+          border-bottom-left-radius: 6px;
+        }
+        :global(.ant-input-group-addon) {
+          left: 0;
+          border-radius: 6px;
+          background-color: $gray-10;
+          button {
+            color: $gray-60;
+            font-size: $fonts * 9;
+            font-weight: 700;
+            border: 1px solid $gray-40;
+            background-color: $gray-10;
+            border: transparent;
+            border-radius: 6px;
+          }
+        }
+        :global(.ant-input-affix-wrapper-focused) {
+          box-shadow: 0 0 0 2px $primary-blue-30;
+        }
+        :global(.ant-input-affix-wrapper input:hover) {
+          border-color: $primary-blue-50;
+        }
+      }
+    }
+    .button {
+      margin-left: auto;
+      button {
+        border-radius: 6px;
+        padding: 11px 20px;
+        height: auto;
+        font-size: 18px;
+        font-weight: 700;
+        color: $white;
+        background-color: $primary-blue-50;
+      }
+
+      button[disabled] {
+        background-color: $primary-blue-30;
+      }
+    }
+  }
+}

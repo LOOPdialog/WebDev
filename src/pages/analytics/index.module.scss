@@ -4,7 +4,7 @@
 .mainWrapperAnalyticsPageWrapper {
   display: flex;
   position: relative;
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - $top-menu-list);
   overflow: hidden;
 }
 

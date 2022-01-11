@@ -1,0 +1,35 @@
+@import "../../../assets/styles/mixins";
+@import "../../../assets/styles/variables";
+
+.mainWrapperOnboardingPageSecond {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: $width-onboarding-right-info;
+  background-color: $gray-10;
+  padding: $steping * 7 $steping * 10;
+  border-left: 1px solid $gray-16;
+  .OnboardingPageSecondMenu {
+    display: flex;
+    align-items: center;
+    .backIcon {
+      cursor: pointer;
+      svg {
+        width: 18px;
+        height: 18px;
+        color: rgb(164, 166, 166);
+      }
+    }
+    .infoIcon {
+      margin-left: auto;
+      svg {
+        width: 18px;
+        height: 18px;
+        color: rgb(74, 77, 78);
+      }
+    }
+  }
+  .OnboardingPageSecondContent {
+    margin-top: $steping * 6;
+  }
+}
