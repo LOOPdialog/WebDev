@@ -10,6 +10,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { FirebaseError, initializeApp } from 'firebase/app';
 import { firebaseConfig } from '../../../helpers/getNewToken';
 import { EFormDataKeywords, getValidatorFunction, setRulesForm } from '../../../helpers/Form/Form';
+import { useNavigate } from 'react-router-dom';
 
 const SecondSection = (): React.ReactElement => {
   const [form] = Form.useForm<FormInstance>();
@@ -17,12 +18,12 @@ const SecondSection = (): React.ReactElement => {
   const [errorsRes, setErrorsRes] = useState(defaultErr);
   const { data: themed } = useQuery(GET_MAIN);
   const formRenderDataL = useMemo(() => {
-    console.log(errorsRes);
     return setRulesForm(formRenderDataLoginPage, {
       email: getValidatorFunction(errorsRes.username, [EFormDataKeywords.EMAIL, EFormDataKeywords.UNKNOW, 'user', 'name']),
       password: getValidatorFunction(errorsRes.password, [EFormDataKeywords.PASSWORD, EFormDataKeywords.UNKNOW])
     });
   }, [errorsRes]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (errorsRes.username !== '' || errorsRes.password !== '') {
@@ -40,7 +41,6 @@ const SecondSection = (): React.ReactElement => {
 
   const handleFormSubmit = (values: any): void => {
     const { password, email }: { password: string; email: string } = values;
-
     initializeApp(firebaseConfig);
 
     const auth = getAuth();
@@ -53,8 +53,10 @@ const SecondSection = (): React.ReactElement => {
         user?.stsTokenManager?.refreshToken &&
           // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
           window.localStorage.setItem('rToken', user?.stsTokenManager.refreshToken);
-        (user?.accessToken || user?.stsTokenManager?.refreshToken) &&
+        if (user?.accessToken || user?.stsTokenManager?.refreshToken) {
+          navigate('/dealers');
           window.location.reload();
+        }
       })
       .catch((error: FirebaseError) => {
         const errorCode = error.code;

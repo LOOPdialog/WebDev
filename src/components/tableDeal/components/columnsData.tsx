@@ -207,7 +207,7 @@ export const getColumns: (classes: any, onOpen: any, setIdDealer: any) => any[] 
               firstClick: true,
               open: (info?.vodafoneId !== prev?.id ? prev.open : !prev.open) || !prev?.firstClick
             };
-          }); setIdDealer({ company_id: `${info.vodafoneId}` });
+          }); setIdDealer({ id: `${info.vodafoneId}` });
         }}>
           <InfoIconSvg style={{ cursor: 'pointer' }} />
         </div>

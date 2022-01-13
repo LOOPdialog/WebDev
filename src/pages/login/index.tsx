@@ -11,8 +11,9 @@ interface ILoginPage {
 
 const LoginPage = (_props: ILoginPage): React.ReactElement => {
   const { data: themed } = useQuery(GET_MAIN);
+  console.log(themed.main.themed === 'vodafone');
   return (
-    <div className={`${classes.mainWrapperLoginPage} ${themed === 'vodafone' && classes.vodafone}`}>
+    <div className={`${classes.mainWrapperLoginPage} ${(themed.main.themed === 'vodafone' && 'vodafone') || ''}`}>
       <div className={classes.mainWrapperLoginPageBg}>
         <FirstSection />
         <SecondSection />

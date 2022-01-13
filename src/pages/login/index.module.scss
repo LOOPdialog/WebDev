@@ -7,7 +7,7 @@
   width: 100%;
   min-height: 100vh;
   background-color: $primary-blue-50;
-  &.vodafone, .vodafone {
+  &:global(.vodafone), :global(.vodafone) {
     background-color: $primary-red;
   }
   .mainWrapperLoginPageBg {

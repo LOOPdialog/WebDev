@@ -48,3 +48,9 @@
     font-size: $fonts * 7.5;
   }
 }
+.loading {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: $steping * 10;
+}

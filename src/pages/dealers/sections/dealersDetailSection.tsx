@@ -58,14 +58,13 @@ const DealersDetailSection = ({ deal, person }: IDealersDetailSection): React.Re
         </div>
         <div className={classes.dealersDetailSectionPageCustomerInfo}>
           <div className={classes.dealersDetailSectionPageCustomerInfoText}>
-            <div className={classes.title}>{person?.fullname || ''}Marc Lobinger</div>
+            <div className={classes.title}>{person?.fullname || ''}</div>
             <div className={classes.preTitle}>Geburtsdatum</div>
-            <div className={classes.text}>{person?.birthday || ''}14.03.1998 (In 65 Tagen)</div>
+            <div className={classes.text}>{person?.birthday || ''} (In Tagen)</div>
             <div className={classes.preTitle}>Adresse</div>
-            <div className={classes.text}>{person?.address || ''}Bergstraße 4<br />
-              48064 Rostock</div>
+            <div className={classes.text}>{person?.address || ''}</div>
             <div className={classes.preTitle}>Firma</div>
-            <div className={classes.text}>{person?.firma || ''}Standort</div>
+            <div className={classes.text}>{person?.firma || ''}</div>
             <div className={classes.link}>Mehr Informationen<span className={classes.icon}><RightOutlined /></span></div>
           </div>
           <div className={classes.dealersDetailSectionPageCustomerInfoImg}>
@@ -78,7 +77,31 @@ const DealersDetailSection = ({ deal, person }: IDealersDetailSection): React.Re
         </div>
       </div>
       <div className={classes.dealersDetailSectionPageLocation}>
-        <div className={classes.dealersDetailLocationItem}>
+        {
+          person?.shops.map((item, index): React.ReactNode => (
+            <div key={`${index}_person.shop`} className={classes.dealersDetailLocationItem}>
+              <div className={classes.header}>
+                <LocationIconSvg className={classes.leftIcon} width={15} height={18} />
+                <span className={classes.text}>Standort</span>
+                <NavigateIconSvg className={classes.rightIcon} width={16} height={16} />
+              </div>
+              <div className={classes.content}>
+                <div className={classes.contentLeft}>
+                  <span className={classes.title}>{item.name}</span>
+                  <span className={classes.address}>{item.address}</span>
+                </div>
+                <div className={classes.contentRight}>
+                  <Image
+                    width={60}
+                    preview={false}
+                    src={LogoLoop}
+                  />
+                </div>
+              </div>
+            </div>
+          ))
+        }
+        {/* <div className={classes.dealersDetailLocationItem}>
           <div className={classes.header}>
             <LocationIconSvg className={classes.leftIcon} width={15} height={18} />
             <span className={classes.text}>Standort</span>
@@ -119,7 +142,7 @@ const DealersDetailSection = ({ deal, person }: IDealersDetailSection): React.Re
               />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

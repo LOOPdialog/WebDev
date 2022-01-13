@@ -1,5 +1,5 @@
 const main = {
-  themed: 'loop',
+  themed: 'loop', // loop | vodafone
   isAuth: false,
   __typename: 'MAIN'
 };

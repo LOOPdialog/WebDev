@@ -1,3 +1,4 @@
+// TODO: Deleted next
 const dataTableDeal = [
   {
     key: '1',

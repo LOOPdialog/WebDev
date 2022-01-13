@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Table, Typography } from 'antd';
 import { EmailIconSvg } from '../../assets/icons/EmailIcon';
 import { GoogleIconSvg } from '../../assets/icons/GoogleIcon';
@@ -6,7 +6,9 @@ import { WhatsappIconSvg } from '../../assets/icons/WhatsappIcon';
 import { FacebookIconSvg } from '../../assets/icons/FacebookIcon';
 import classes from './index.module.scss';
 import { getColumns } from './components/columnsData';
-import dataTableDeal from './dataTableDeal';
+import { useQuery } from '@apollo/client';
+import COMPANY_CUSTOMERS from '../../gql/query/companyCustomers';
+import { LoadingOutlined } from '@ant-design/icons';
 
 interface ISocialIconByName {
   [key: string]: React.ReactNode;
@@ -21,7 +23,26 @@ export const socialIconByName: ISocialIconByName = {
 
 const TableDeal = ({ onOpen, setVariables }: any): React.ReactElement => {
   const columns: any = getColumns(classes, onOpen, setVariables);
-  const dataL = dataTableDeal;
+  const { loading, data } = useQuery(COMPANY_CUSTOMERS, {
+    variables: {
+      company_id: process.env.REACT_APP_GRAPHQL_COMPANY_ID || ''
+    }
+  });
+  const dataL = useMemo(() => {
+    return data?.companyCustomers?.map((item, index) => { // eslint-disable-line @typescript-eslint/no-unsafe-return
+      return {
+        key: index,
+        vodafoneId: item.id,
+        name: item.customerType?.name || '',
+        teammiglieder: `${item.profile.firstName} ${item.profile.lastName}`,
+        standorte: item.opportunitiesCount,
+        status: item.internalNotes?.read,
+        kanale: item.profile?.channels?.map((item): string => `${item.type}`) || [],
+        info: '1',
+        nachrichten: item?.opportunities?.messagesCount || `${Number(Math.random() * 100).toFixed(2)}`
+      };
+    }) || [];
+  }, [data]);
 
   function onChange(pagination, filters, sorter, extra) { // eslint-disable-line @typescript-eslint/no-unused-vars
     // console.log('params', pagination, filters, sorter, extra);
@@ -29,7 +50,9 @@ const TableDeal = ({ onOpen, setVariables }: any): React.ReactElement => {
 
   return (
     <div>
-      <Table
+      {loading &&
+        <div className={classes.loading}><LoadingOutlined style={{ fontSize: 56 }} spin /></div>}
+      {!loading && dataL && <Table
         rowClassName={(_record, index: number): string => index % 2 === 0 ? `${classes.tableRowLight}` : `${classes.tableRowDark}`}
         className={classes.tableRender}
         columns={columns}
@@ -53,11 +76,7 @@ const TableDeal = ({ onOpen, setVariables }: any): React.ReactElement => {
         sticky
         bordered
         pagination={false}
-        onRow={() => {
-          return {
-            // onClick: _event => { console.log(record, rowIndex, _event); onOpen(prev => !prev); }
-          };
-        }} />
+      />}
     </div>
   );
 };

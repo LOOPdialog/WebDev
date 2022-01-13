@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-const COMPANY_SUCTOMERS = gql`
+const COMPANY_CUSTOMERS = gql`
   query CompanyCustomers($company_id: String!) {
       companyCustomers(company_id: $company_id) {
         id
@@ -35,9 +35,22 @@ const COMPANY_SUCTOMERS = gql`
               api_key
             }
           }
+          company {
+            channels {
+              id
+              type
+              value
+            }
+          }
+        }
+        internalNotes {
+          read
+        }
+        opportunities {
+          messagesCount
         }
       }
   }
 `;
 
-export default COMPANY_SUCTOMERS;
+export default COMPANY_CUSTOMERS;
