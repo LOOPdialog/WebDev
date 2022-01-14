@@ -17,13 +17,13 @@ const SecondSection = (): React.ReactElement => {
   const defaultErr = { username: '', password: '' };
   const [errorsRes, setErrorsRes] = useState(defaultErr);
   const { data: themed } = useQuery(GET_MAIN);
+  const navigate = useNavigate();
   const formRenderDataL = useMemo(() => {
     return setRulesForm(formRenderDataLoginPage, {
       email: getValidatorFunction(errorsRes.username, [EFormDataKeywords.EMAIL, EFormDataKeywords.UNKNOW, 'user', 'name']),
       password: getValidatorFunction(errorsRes.password, [EFormDataKeywords.PASSWORD, EFormDataKeywords.UNKNOW])
     });
   }, [errorsRes]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (errorsRes.username !== '' || errorsRes.password !== '') {

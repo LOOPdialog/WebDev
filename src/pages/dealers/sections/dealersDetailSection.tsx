@@ -101,48 +101,6 @@ const DealersDetailSection = ({ deal, person }: IDealersDetailSection): React.Re
             </div>
           ))
         }
-        {/* <div className={classes.dealersDetailLocationItem}>
-          <div className={classes.header}>
-            <LocationIconSvg className={classes.leftIcon} width={15} height={18} />
-            <span className={classes.text}>Standort</span>
-            <NavigateIconSvg className={classes.rightIcon} width={16} height={16} />
-          </div>
-          <div className={classes.content}>
-            <div className={classes.contentLeft}>
-              <span className={classes.title}>Shop Bamberg</span>
-              <span className={classes.address}>Hauptwachstr. 16<br />
-                96047 Bamberg</span>
-            </div>
-            <div className={classes.contentRight}>
-              <Image
-                width={60}
-                preview={false}
-                src={LogoLoop}
-              />
-            </div>
-          </div>
-        </div>
-        <div className={classes.dealersDetailLocationItem}>
-          <div className={classes.header}>
-            <LocationIconSvg className={classes.leftIcon} width={15} height={18} />
-            <span className={classes.text}>Standort</span>
-            <NavigateIconSvg className={classes.rightIcon} width={16} height={16} />
-          </div>
-          <div className={classes.content}>
-            <div className={classes.contentLeft}>
-              <span className={classes.title}>Shop Erlangen</span>
-              <span className={classes.address}>Hauptwachstr. 16<br />
-                96047 Bamberg</span>
-            </div>
-            <div className={classes.contentRight}>
-              <Image
-                width={60}
-                preview={false}
-                src={LogoLoop}
-              />
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
   );

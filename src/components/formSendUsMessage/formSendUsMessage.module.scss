@@ -106,4 +106,10 @@
   :global(.ant-input-suffix) {
     display: none;
   }
+  .formLabel {
+    font-size: $fonts *9;
+    font-weight: 700;
+    color: $gray-55;
+    margin-bottom: $steping * 5;
+  }
 }

@@ -11,6 +11,7 @@ export interface IFormRenderData {
   rows?: number;
   itemName: string;
   titleName?: string;
+  labelName?: string;
   rules?: any;
   dependencies?: Array<string>;
   initialValue?: string | Array<string>;
@@ -22,6 +23,7 @@ interface IProps {
   formRenderData: Array<IFormRenderData>;
   btnText: string;
   btnClass?: string;
+  labelClass?: string;
   disabled?: boolean;
   beforeBtn?: React.ReactElement;
   form: FormInstance;
@@ -40,7 +42,7 @@ export enum EFormInput {
 }
 
 export const FormSendUsMessage = (props: IProps): React.ReactElement => {
-  const { form, formRenderData, btnText, onSubmit, filedBgColor, componentItem, btnClass, beforeBtn, disabled } = props;
+  const { form, formRenderData, btnText, onSubmit, filedBgColor, componentItem, btnClass, beforeBtn, disabled, labelClass } = props;
   const renderItemType = (item: any): { input: React.ReactElement, title?: React.ReactElement, icon?: React.ReactElement } => {
     const title = item.titleName ? <span className={classes.inputFieldTitle}>{item.titleName}</span> : null;
 
@@ -90,7 +92,9 @@ export const FormSendUsMessage = (props: IProps): React.ReactElement => {
     >
       {formRenderData?.map((item: any, index: number) => {
         const renderType = renderItemType(item);
-        const formRender = <><Form.Item
+        const formRender = <>
+        {!!item.labelName && <div className={`${classes.formLabel} ${labelClass || ''}`}>{item.labelName}</div>}
+        <Form.Item
           className={classes.formItemWrapper}
           name={item.itemName}
           rules={item.rules}
